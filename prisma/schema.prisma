@@ -1,0 +1,91 @@
+// Schema del database per TravelTrip
+// Provider: PostgreSQL (compatibile con Vercel Postgres, Neon, Supabase, Railway, ecc.)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String   @id @default(cuid())
+  email              String   @unique
+  phone              String?
+  passwordHash       String
+  verified           Boolean  @default(false)
+  verificationCode   String?
+  verificationExpiry DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  structure Structure?
+
+  @@map("users")
+}
+
+model Structure {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  nome        String?
+  indirizzo   String?
+  lat         String?
+  lng         String?
+  email       String?
+  telefono    String?
+  whatsapp    String?
+  // descrizione multilingua salvata come JSON: { it: "...", en: "...", de: "...", es: "...", ru: "..." }
+  descrizione Json?    @default("{}")
+  colore      String?  @default("#E8748A")
+
+  checkin     String?
+  checkout    String?
+  colazione   String?
+  pranzo      String?
+  cena        String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  servizi          Servizio[]
+  informazioniUtili InformazioneUtile[]
+
+  @@map("structures")
+}
+
+model Servizio {
+  id          String    @id @default(cuid())
+  structureId String
+  structure   Structure @relation(fields: [structureId], references: [id], onDelete: Cascade)
+
+  nome        String
+  prezzo      String?
+  descrizione Json?     @default("{}")
+  immagineUrl String?
+  ordine      Int       @default(0)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("servizi")
+}
+
+model InformazioneUtile {
+  id          String    @id @default(cuid())
+  structureId String
+  structure   Structure @relation(fields: [structureId], references: [id], onDelete: Cascade)
+
+  titolo      String
+  descrizione Json?     @default("{}")
+  icona       String?
+  ordine      Int       @default(0)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("informazioni_utili")
+}
