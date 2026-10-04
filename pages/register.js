@@ -90,7 +90,7 @@ export default function Register() {
         </form>
 
         <div className="auth-alt">
-          Hai gi\u00e0 un account? <Link href="/login">Accedi</Link>
+          Hai già un account? <Link href="/login">Accedi</Link>
         </div>
       </div>
     </div>
