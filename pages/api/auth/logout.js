@@ -1,6 +1,6 @@
-const { clearSessionCookie } = require('../../../lib/auth');
+import { clearSessionCookie } from '../../../lib/auth';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   clearSessionCookie(res);
   return res.status(200).json({ ok: true });
 };

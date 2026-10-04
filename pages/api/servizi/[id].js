@@ -1,7 +1,7 @@
-const { prisma } = require('../../../lib/db');
-const { getUserIdFromRequest } = require('../../../lib/auth');
+import { prisma } from '../../../lib/db';
+import { getUserIdFromRequest } from '../../../lib/auth';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   const userId = getUserIdFromRequest(req);
   if (!userId) return res.status(401).json({ error: 'Non autenticato' });
 

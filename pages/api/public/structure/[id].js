@@ -1,8 +1,8 @@
-const { prisma } = require('../../../../lib/db');
+import { prisma } from '../../../../lib/db';
 
 // Endpoint pubblico: nessuna autenticazione richiesta.
 // Restituisce solo i dati pensati per essere visti dall'ospite (niente email/telefono interni, ecc. se non desiderato).
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Metodo non consentito' });
   }

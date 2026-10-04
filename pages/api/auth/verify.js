@@ -1,7 +1,7 @@
-const { prisma } = require('../../../lib/db');
-const { createSessionToken, setSessionCookie } = require('../../../lib/auth');
+import { prisma } from '../../../lib/db';
+import { createSessionToken, setSessionCookie } from '../../../lib/auth';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Metodo non consentito' });
   }

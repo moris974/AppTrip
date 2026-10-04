@@ -35,7 +35,7 @@ export default function Dashboard() {
             Completa i <a href="/impostazioni/dati-struttura" style={{ color: '#3B6FD1' }}>Dati struttura</a>, poi aggiungi{' '}
             <a href="/impostazioni/servizi" style={{ color: '#3B6FD1' }}>Servizi</a> e{' '}
             <a href="/impostazioni/informazioni-utili" style={{ color: '#3B6FD1' }}>Informazioni utili</a>: tutto quello
-            che salvi qui comparir\u00e0 davvero nella pagina che vedono i tuoi ospiti.
+            che salvi qui comparirà davvero nella pagina che vedono i tuoi ospiti.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function Dashboard() {
           <div className="box">
             <div className="box-title">Anteprima lato ospite</div>
             <p style={{ fontSize: 13, color: '#666' }}>
-              Questo \u00e8 il link pubblico che i tuoi ospiti vedranno (puoi generare un QR code da qui per la tua reception):
+              Questo è il link pubblico che i tuoi ospiti vedranno (puoi generare un QR code da qui per la tua reception):
             </p>
             <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
               <code style={{ background: '#F5F4F7', padding: '8px 12px', borderRadius: 6, fontSize: 12 }}>

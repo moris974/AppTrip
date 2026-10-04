@@ -1,12 +1,12 @@
-const { prisma } = require('../../../lib/db');
-const { getUserIdFromRequest } = require('../../../lib/auth');
+import { prisma } from '../../../lib/db';
+import { getUserIdFromRequest } from '../../../lib/auth';
 
 async function getOwnStructureId(userId) {
   const structure = await prisma.structure.findUnique({ where: { userId }, select: { id: true } });
   return structure ? structure.id : null;
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   const userId = getUserIdFromRequest(req);
   if (!userId) return res.status(401).json({ error: 'Non autenticato' });
 

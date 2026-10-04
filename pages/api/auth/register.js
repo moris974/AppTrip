@@ -1,8 +1,8 @@
-const { prisma } = require('../../../lib/db');
-const { hashPassword, generateVerificationCode } = require('../../../lib/auth');
-const { sendVerificationEmail } = require('../../../lib/mailer');
+import { prisma } from '../../../lib/db';
+import { hashPassword, generateVerificationCode } from '../../../lib/auth';
+import { sendVerificationEmail } from '../../../lib/mailer';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Metodo non consentito' });
   }
